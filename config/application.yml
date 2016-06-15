@@ -1,0 +1,16 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+STRIPE_SECRET_KEY: sk_test_ed2jw5p8WxjW4PToxoE4JGMv
+STRIPE_PUBLISHABLE_KEY: pk_test_sX8KbWgMQG1pkV2Tab5mpPHM
+
+production:
+  STRIPE_SECRET_KEY: sk_live_b5w7KxxtGACKJbmfYVY94U8i
+  STRIPE_PUBLISHABLE_KEY: pk_live_MYan57NokSXbsvRb98ACM2Co
+
+SENDGRID_PASSWORD: q7hld5d09960
+SENDGRID_USERNAME: app49997671@heroku.com
+
+ROLLBAR_ACCESS_TOKEN: d0b91d2b94ff4d9b831a19e62819b492
