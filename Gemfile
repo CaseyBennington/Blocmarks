@@ -11,12 +11,13 @@ end
 group :development do
   gem 'sqlite3'
   gem 'rails_layout'
+  gem 'web-console'
+  gem 'meta_request'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
-  gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'faker'
