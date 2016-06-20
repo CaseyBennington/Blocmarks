@@ -4,7 +4,7 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && (user.admin?)
+    user.present? && user.admin?
   end
 
   def destroy?

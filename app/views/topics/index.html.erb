@@ -21,6 +21,7 @@
           <% end %>
           <br />
           <% topic.bookmarks.each do |bookmark| %>
+            <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
             <%= link_to "#{bookmark.url}", "#{bookmark.url}", target: "_blank" %>
             <% if policy(bookmark).update? %>
               <%= link_to "edit", edit_bookmark_path(bookmark), class: 'btn btn-danger' %>
