@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index, :show, :edit, :update]
+  before_action :authenticate_user!
 
   def index
     # @topics = policy_scope(Topic)
@@ -14,16 +14,17 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    # authorize @topic
+    authorize @topic
   end
 
   def edit
-    # authorize @topic
+    @topic = Topic.find(params[:id])
+    authorize @topic
   end
 
   def create
     @topic = current_user.topics.new(topic_params)
-    # authorize @topic
+    authorize @topic
 
     if @topic.save
       flash[:notice] = 'Topic was saved successfully.'
@@ -36,7 +37,7 @@ class TopicsController < ApplicationController
 
   def update
     # @wiki.assign_attributes(wiki_params)
-    # authorize @wiki
+    authorize @wiki
 
     if @topic.update(topic_params)
       # @topic.slug = nil
@@ -50,7 +51,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    # authorize @topic
+    authorize @topic
 
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\" was deleted successfully."

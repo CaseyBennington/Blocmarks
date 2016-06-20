@@ -1,11 +1,11 @@
-<h1>Edit Topic</h1>
+<h1>Edit <%= @topic.title %></h1>
 
 <div class = "row">
   <div class = "col-md-4">
     <p>Guidelines for topics:</p>
     <ul>
       <li>Make sure the topic is appropriate.</li>
-      <li>Never insult dogs.</li>
+      <li>Do NOT use special characters.</li>
       <li>Smile when you type.</li>
     </ul>
   </div>
@@ -16,6 +16,7 @@
         <%= f.text_field :title, class: 'form-control', placeholder: "Enter topic title" %>
       </div>
       <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= link_to "Back", :back, class: 'btn btn-link' %>
     <% end %>
   </div>
 </div>
