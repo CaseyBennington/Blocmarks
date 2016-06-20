@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <% @bookmarks.each do |bookmark| %>
       <div class="">
-
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         <% if bookmark.title != nil %>
           <%= "#{bookmark.title}" %>
           <br />
