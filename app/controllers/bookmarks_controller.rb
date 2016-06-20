@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @bookmark = @topic.posts.build(bookmark_params)
+    @bookmark = @topic.bookmarks.build(bookmark_params)
     @bookmark.user = current_user
 
     if @bookmark.save
@@ -34,7 +34,7 @@ class BookmarksController < ApplicationController
 
     if @bookmark.save
       flash[:notice] = 'Bookmark was updated successfully.'
-      redirect_to [@bookmark.topic, @bookmark]
+      redirect_to topics_path
     else
       flash.now[:alert] = 'There was an error saving the bookmark. Please try again.'
       render :edit
