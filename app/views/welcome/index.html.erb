@@ -1,5 +1,5 @@
 <div class = "jumbotron text-center">
-  <h1>Blocmark</h1>
+  <h1>Welcome to Blocmark</h1>
   <p>Blocmark is an application that allows users to bookmark URLs via email, peruse other user's bookmarks and maintain a personal index of categorized bookmarks.</p>
   <% if !user_signed_in? %>
     <div>
@@ -9,15 +9,12 @@
 </div>
 <div class="container text-center">
   <div class = "row">
-    <div class = "col-md-6">
-      <h2>Category</h2>
-        <%= link_to 'Sign up', new_user_registration_path %>
-      <p>Bookmarks!</p>
-    </div>
-    <div class = "col-md-6">
-      <h2>Category</h2>
-        <%= link_to 'Sign in', new_user_session_path %>
-      <p>More bookmarks!</p>
+    <div class = "col-md-12">
+      <h2>Instruction</h2>
+      <p>To use this application its as easy as:</p>
+      <p>Send an email to <strong>quiet-plains-42389@app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org</strong> with the your category, or topic, in the subject line, and in the body, write the URL you would like to bookmark.</p>
+      <p>Click send and it's saved to your account!</p>
+      <p>If you send a bookmark from an email address other than the one registered on Blocmarks, a new account will be created for you based on the email address you used to send the email. You would then use the <em>Forgot your password</em> option to create a new password.</p>
     </div>
   </div>
 </div>

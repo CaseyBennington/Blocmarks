@@ -1,8 +1,28 @@
+# Create an admin user
+admin = User.create!(
+  name: 'admin',
+  email: 'admin@example.com',
+  password: 'password',
+  confirmed_at: Faker::Date.between(1.year.ago, Date.today),
+  confirmation_token: Faker::Internet.password(20, 20, true),
+  role: 'admin'
+)
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email
+
+# Create a moderator member
+moderator = User.create!(
+  name: 'moderator',
+  email: 'moderator@example.com',
+  password: 'password',
+  confirmed_at: Faker::Date.between(1.year.ago, Date.today),
+  confirmation_token: Faker::Internet.password(20, 20, true),
+  role: 'moderator'
+)
+
 # Create a standard member
 member = User.create!(
-  # first_name: 'member',
-  # last_name: 'member',
-  # user_name: 'member.member',
+  name: 'member',
   email: 'member@example.com',
   password: 'password',
   confirmed_at: Faker::Date.between(1.year.ago, Date.today),
@@ -12,9 +32,7 @@ member = User.create!(
 # Create Users
 5.times do
   User.create!(
-    # first_name: Faker::Name.first_name,
-    # last_name: Faker::Name.last_name,
-    # user_name: Faker::Internet.user_name,
+    name: Faker::Name.first_name,
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(10, 20, true, true),
     confirmed_at: Faker::Date.between(1.year.ago, Date.today),
