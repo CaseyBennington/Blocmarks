@@ -1,8 +1,14 @@
 class BookmarksController < ApplicationController
-  before_action :authorize_user
+  before_action :authenticate_user!
 
   def index
     @bookmarks = Bookmark.all
+    @bookmarks.each do |bookmark|
+      bookmark = Bookmark.find(bookmark.id)
+      bookmark_url = bookmark.url
+      image = display(bookmark_url)
+      bookmark.update_attributes(image: image)
+    end
   end
 
   def new

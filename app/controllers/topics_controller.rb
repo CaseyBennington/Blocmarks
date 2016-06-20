@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    # authorize @topic
+    authorize @topic
     @topic = Topic.friendly.find(params[:id])
   end
 
