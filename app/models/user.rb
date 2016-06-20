@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   enum role: [:standard, :moderator, :admin]
 
-  def liked(bookark)
+  def liked(bookmark)
     likes.where(bookmark_id: bookmark.id).first
   end
 
