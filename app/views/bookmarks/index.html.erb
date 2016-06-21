@@ -19,9 +19,9 @@
             <br />
           <% end %>
         <% if bookmark.image != nil %>
-          <%= image_tag(("#{bookmark.image}"), size: "240").html_safe %>
+          <%= image_tag(("#{bookmark.image}"), size: "200").html_safe %>
         <% else %>
-          <%= image_tag("no-preview.png", size: "240", :alt => "No Preview Available") %>
+          <%= image_tag("No_Image_Available.png", size: "200", :alt => "No Image Available") %>
         <% end %>
         <hr />
         <%= link_to "#{bookmark.topic.title}", bookmark.topic %>

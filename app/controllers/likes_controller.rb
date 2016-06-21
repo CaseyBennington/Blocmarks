@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    @bookmark = Book.find(params[:bookmark_id])
+    @bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.build(bookmark: @bookmark)
 
     if like.save

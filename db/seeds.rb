@@ -1,6 +1,5 @@
 # Create an admin user
 admin = User.create!(
-  name: 'admin',
   email: 'admin@example.com',
   password: 'password',
   confirmed_at: Faker::Date.between(1.year.ago, Date.today),
@@ -12,7 +11,6 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 # Create a moderator member
 moderator = User.create!(
-  name: 'moderator',
   email: 'moderator@example.com',
   password: 'password',
   confirmed_at: Faker::Date.between(1.year.ago, Date.today),
@@ -22,7 +20,6 @@ moderator = User.create!(
 
 # Create a standard member
 member = User.create!(
-  name: 'member',
   email: 'member@example.com',
   password: 'password',
   confirmed_at: Faker::Date.between(1.year.ago, Date.today),
@@ -32,7 +29,6 @@ member = User.create!(
 # Create Users
 5.times do
   User.create!(
-    name: Faker::Name.first_name,
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(10, 20, true, true),
     confirmed_at: Faker::Date.between(1.year.ago, Date.today),
@@ -55,8 +51,10 @@ topics = Topic.all
 20.times do
   bookmark = Bookmark.create!(
     topic: topics.sample,
+    user: users.sample,
     url: Faker::Internet.url
   )
+  bookmark.add_image
   bookmark.update_attribute(:created_at, Faker::Time.between(DateTime.now - 365, DateTime.now))
 end
 bookmarks = Bookmark.all

@@ -1,15 +1,14 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, except: [:index, :new, :create]
   before_action :authenticate_user!
 
   def index
-    # @topics = policy_scope(Topic)
     @topics = Topic.all
   end
 
   def show
-    # authorize @topic
-    @topic = Topic.find(params[:id])
+    authorize @topic
+    @topic = Topic.friendly.find(params[:id])
   end
 
   def new
@@ -18,7 +17,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     authorize @topic
   end
 
@@ -65,7 +64,7 @@ class TopicsController < ApplicationController
   private
 
   def set_topic
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
   end
 
   def topic_params

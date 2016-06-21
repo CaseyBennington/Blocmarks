@@ -81,6 +81,10 @@ GEM
     diff-lcs (1.2.5)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    embedly (1.9.1)
+      json
+      oauth
+      querystring
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -150,6 +154,7 @@ GEM
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth (0.5.1)
     oj (2.12.14)
     orm_adapter (0.5.0)
     pg (0.18.4)
@@ -163,6 +168,7 @@ GEM
     pundit-matchers (1.1.0)
       pundit (~> 1.1, >= 1.1.0)
       rspec-rails (>= 3.0.0)
+    querystring (0.1.0)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
@@ -297,6 +303,7 @@ DEPENDENCIES
   capybara
   coffee-rails
   devise
+  embedly
   factory_girl_rails
   faker
   figaro
