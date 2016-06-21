@@ -3,12 +3,6 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = Bookmark.all
-    @bookmarks.each do |bookmark|
-      bookmark = Bookmark.find(bookmark.id)
-      bookmark_url = bookmark.url
-      image = display(bookmark_url)
-      bookmark.update_attributes(image: image)
-    end
   end
 
   def new
@@ -21,6 +15,7 @@ class BookmarksController < ApplicationController
     @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = @topic.bookmarks.build(bookmark_params)
     @bookmark.user = current_user
+    @bookmark.add_image
     authorize @bookmark
 
     if @bookmark.save

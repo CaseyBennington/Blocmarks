@@ -51,8 +51,10 @@ topics = Topic.all
 20.times do
   bookmark = Bookmark.create!(
     topic: topics.sample,
+    user: users.sample,
     url: Faker::Internet.url
   )
+  bookmark.add_image
   bookmark.update_attribute(:created_at, Faker::Time.between(DateTime.now - 365, DateTime.now))
 end
 bookmarks = Bookmark.all
