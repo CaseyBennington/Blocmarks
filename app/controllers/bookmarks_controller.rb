@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
 
     if @bookmark.save
       flash[:notice] = 'Bookmark was saved successfully.'
-      redirect_to [@topic, @bookmark]
+      redirect_to @topic
     else
       flash.now[:alert] = 'There was an error saving the bookmark. Please try again.'
       render :new
@@ -62,6 +62,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:post).permit(:url)
+    params.require(:bookmark).permit(:url, :topic_id, :user_id, :title, :image)
   end
 end

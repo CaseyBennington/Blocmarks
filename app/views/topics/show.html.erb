@@ -11,7 +11,7 @@
       <% @topic.bookmarks.each do |current_bookmark| %>
         <div class = "media">
           <div class = "media-body">
-              <%= redner partial: 'likes/like', locals: { bookmark: current_bookmark } %>
+              <%= render partial: 'likes/like', locals: { bookmark: current_bookmark } %>
               <%= link_to current_bookmark.url, "http://#{current_bookmark.url}", target: "_blank" %>
               <% if policy(current_bookmark).update? %>
                 <%= link_to "edit", edit_bookmark_path(current_bookmark) %>
