@@ -17,9 +17,9 @@ ActionMailer::Base.smtp_settings = {
   address: 'smtp.mailgun.org',
   user_name: ENV['MAILGUN_SMTP_LOGIN'],
   password: ENV['MAILGUN_SMTP_PASSWORD'],
-  # domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
+  domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
   # domain: 'quiet-plains-42389.herokuapp.com',
-  domain: 'herokuapp.com',
+  # domain: 'herokuapp.com',
   authentication: :plain,
   content_type: 'text/html',
   enable_starttls_auto: true
