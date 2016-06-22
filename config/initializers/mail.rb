@@ -1,17 +1,30 @@
-ActionMailer::Base.smtp_settings = {
-  port: 587,
-  address: 'smtp.mailgun.org',
-  user_name: ENV['MAILGUN_SMTP_LOGIN'],
-  password: ENV['MAILGUN_SMTP_PASSWORD'],
-  # domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
-  domain: 'herokuapp.com',
-  authentication: :plain,
-  content_type: 'text/html'
-}
-ActionMailer::Base.delivery_method = :smtp
-
-# Makes debugging *way* easier
-ActionMailer::Base.raise_delivery_errors = true
+# if Rails.env.development? || Rails.env.production?
+#   ActionMailer::Base.delivery_method = :smtp
+#   ActionMailer::Base.smtp_settings = {
+#     address: 'smtp.sendgrid.net',
+#     port: '2525',
+#     authentication: :plain,
+#     user_name: ENV['SENDGRID_USERNAME'],
+#     password: ENV['SENDGRID_PASSWORD'],
+#     domain: 'herokuapp.com',
+#     enable_starttls_auto: true
+#   }
+# end
+#
+# ActionMailer::Base.smtp_settings = {
+#   port: 587,
+#   address: 'smtp.mailgun.org',
+#   user_name: ENV['MAILGUN_SMTP_LOGIN'],
+#   password: ENV['MAILGUN_SMTP_PASSWORD'],
+#   domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
+#   # domain: 'herokuapp.com',
+#   authentication: :plain,
+#   content_type: 'text/html'
+# }
+# ActionMailer::Base.delivery_method = :smtp
+#
+# # Makes debugging *way* easier
+# ActionMailer::Base.raise_delivery_errors = true
 
 # # This interceptor just makes sure that local mail only emails you.
 # # http://edgeguides.rubyonrails.org/action_mailer_basics.html#intercepting-emails
