@@ -11,14 +11,14 @@
 #   }
 # end
 
-ActionMailer::Base.smtp_settings = {
-  port: 587,
-  address: 'smtp.mailgun.org',
-  user_name: ENV['MAILGUN_SMTP_LOGIN'],
-  password: ENV['MAILGUN_SMTP_PASSWORD'],
-  domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
-  # domain: 'herokuapp.com',
-  authentication: :plain,
-  content_type: 'text/html'
-}
-ActionMailer::Base.delivery_method = :smtp
+# ActionMailer::Base.smtp_settings = {
+#   port: 587,
+#   address: 'smtp.mailgun.org',
+#   user_name: ENV['MAILGUN_SMTP_LOGIN'],
+#   password: ENV['MAILGUN_SMTP_PASSWORD'],
+#   domain: 'app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org',
+#   # domain: 'herokuapp.com',
+#   authentication: :plain,
+#   content_type: 'text/html'
+# }
+# ActionMailer::Base.delivery_method = :smtp
