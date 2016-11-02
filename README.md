@@ -26,7 +26,7 @@ The source code is here on GitHub: https://github.com/CaseyBennington/Shmarks
 
 **Ruby version 2.3.0p0**
 
-**Rails version 5.0.0.rc1**
+**Rails version 4.2.5**
 
 **Databases**: SQLite (Test, Development), PostgreSQL (Production)
 
