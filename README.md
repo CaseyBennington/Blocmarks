@@ -25,6 +25,7 @@ The source code is here on GitHub: https://github.com/CaseyBennington/Shmarks
 **Languages and Frameworks**: Ruby on Rails and Bootstrap
 
 **Ruby version 2.3.0p0**
+
 **Rails version 5.0.0.rc1**
 
 **Databases**: SQLite (Test, Development), PostgreSQL (Production)
