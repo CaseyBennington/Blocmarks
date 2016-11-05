@@ -1,4 +1,4 @@
-<div class = "jumbotron text-center">
+<!-- <div class = "jumbotron text-center">
   <h1>Welcome to Blocmark</h1>
   <p>Blocmark is an application that allows users to bookmark URLs via email, peruse other user's bookmarks and maintain a personal index of categorized bookmarks.</p>
   <% if !user_signed_in? %>
@@ -15,6 +15,86 @@
       <p>Send an email to <strong>quiet-plains-42389@app6f89ab31539e4054aa5ae3b68089cd19.mailgun.org</strong> with the your category, or topic, in the subject line, and in the body, write the URL you would like to bookmark.</p>
       <p>Click send and it's saved to your account!</p>
       <p>If you send a bookmark from an email address other than the one registered on Blocmarks, a new account will be created for you based on the email address you used to send the email. You would then use the <em>Forgot your password</em> option to create a new password.</p>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="main-header">
+  <div class="row">
+    <div class="large-12 columns intro-text">
+      <div class="large-6 large-centered columns">
+        <h1>Welcome to Shmarks!</h1>
+        <h2>Marks to mark your remarkable life marks.</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-header" id="create-intro"></div>
+<div class="container">
+  <div class="large-12 columns">
+    <div class="section-text">
+      <h1>Organized Links to Whatever Makes You Tick</h1>
+    </div>
+    <div class="medium-4 columns">
+      <h5>Great Looking Site Previews</h5>
+      <h5>
+        <%= link_to "", "http://bloc.io", class: "embedly-card" %>
+      </h5>
+    </div>
+    <div class="medium-4 columns">
+      <h5>Instant Access to Your Favorite Videos</h5>
+      <h5>
+        <%= link_to "", "https://www.youtube.com/watch?v=uWO8xgjyUhs", class: "embedly-card" %>
+      </h5>
+    </div>
+    <div class="medium-4 columns">
+      <h5>Fantastic Social Media Integration</h5>
+      <h5>
+        <%= link_to "", "https://twitter.com/trybloc/status/605412001653755904", class: "embedly-card" %>
+      </h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="large-4 columns">
+      <div class="info-text">
+        <h5 class="section-text">Create & Browse Topics</h5>
+        <p>View your Topics and Those Created by Members of the Shmarks Community</p>
+      </div>
+    </div>
+    <div class="large-4 columns">
+      <div class="info-text">
+        <h5 class="section-text">Create Bookmarks</h5>
+        <p>Bookmark your Favorite Websites or Email the link to Shmarks, and We'll Add it!</p>
+      </div>
+    </div>
+    <div class="large-4 columns">
+      <div class="info-text">
+        <h5 class="section-text">Like Bookmarks</h5>
+        <p>Bookmarks can be "Liked" and added to your profile for Easy Access</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-header" id="join-shmarks"></div>
+<div class="container">
+  <div class="large-12 columns">
+    <div class="section-text">
+      <h1>Become a Member of The Shmarks Community</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="section-text">
+        <h3>Join Shmarks</h3>
+        <%= link_to "Sign Up", new_user_registration_path, class: "button", id: "sign_up" %>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="section-text">
+        <h3>Already a Member</h3>
+        <%= link_to "Sign In", new_user_session_path, class: "button", id: "sign_in" %>
+      </div>
     </div>
   </div>
 </div>

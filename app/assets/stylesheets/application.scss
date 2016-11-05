@@ -12,4 +12,31 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
  */
+@import 'foundation_and_overrides';
+
+// background image for site
+
+.background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: $white;
+  // background-image: url('in_the_clouds2.jpg');
+}
+
+// Centered content box
+
+.content-container {
+  border: $aluminum 1pt solid;
+  background-color: rgba($ghost, .6);
+  position: relative;
+  margin: 5% 5% 10% 5%;
+  padding: 1rem;
+}
+
+h1.title {
+  font-size: 28px;
+}

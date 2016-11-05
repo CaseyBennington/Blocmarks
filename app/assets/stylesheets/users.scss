@@ -1,3 +1,55 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation_and_overrides';
+
+.user-header {
+  @extend .large-12;
+  @extend .columns;
+  @extend .large-centered;
+  text-align: center;
+  text-shadow: .74px .7px .05px $steel;
+}
+
+.main-content {
+  padding: 1rem 0;
+}
+
+.topic-container {
+  @extend .row;
+}
+
+.topic-link {
+  padding: 0 1.5emd;
+}
+
+#favorites, #topics, #bookmarks {
+  padding: 0;
+}
+
+#content-header {
+  text-align: center;
+}
+
+#card-container {
+  padding-left: 0;
+}
+
+#delete-link {
+  margin-top: 2em;
+}
+
+.author-row {
+  @extend .row;
+  padding-left: 3em;
+}
+
+.author-details {
+  @extend .small-6;
+  @extend .columns;
+  padding: 0;
+}
+
+small {
+  font-size: 4rem;
+}

@@ -1,3 +1,99 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation_and_overrides';
+
+%large-container {
+  @extend .large-5;
+  @extend .large-centered;
+}
+
+// Topic Styling
+.inner-container {
+  @extend .large-12;
+  @extend .large-centered;
+  @extend .columns;
+  padding: 1em;
+}
+
+.topic {
+  margin: 0 5% 0 5%;
+}
+
+.topic-container-inner {
+  @extend .large-7;
+  @extend .columns;
+  margin: 0 3em;
+  padding: 0 2em;
+}
+
+.topic-container {
+  text-align: center;
+}
+
+.topic-title {
+  @extend .large-10;
+  @extend .columns;
+
+  h3 {
+    color: $monsoon;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  small {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  a {
+    color: $monsoon;
+  }
+}
+
+// Topic Edit & Delete links
+
+.delete-link {
+  @extend .small-2;
+  @extend .columns;
+  padding: .5em 0;
+
+  .fi-pencil, .fi-trash {
+    color: $aluminum;
+    font-size: 30px;
+    padding: 0 .25em;
+  }
+}
+
+// Styling for Bookmark Edit, Delete, & Favorite
+
+.bookmark-controls {
+  @extend .small-1;
+  @extend .columns;
+  margin-top: 1em;
+  padding: 0;
+
+  .fi-pencil, .fi-trash, .fi-star {
+    color: $aluminum;
+    font-size: 18px;
+    padding: 0.125em;
+  }
+
+  .favorited {
+    color: $primary-color;
+  }
+}
+
+// Button styling for Topic & Bookmark
+
+#save_changes, #create_topic, #create_bookmark, #save_bookmark {
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ind-bookmark {
+  text-align: center;
+  padding: 0;
+  height: 10rem;
+}

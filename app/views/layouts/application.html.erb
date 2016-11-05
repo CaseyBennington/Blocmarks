@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
     <title><%= content_for?(:title) ? yield(:title) : "Blocmarks" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Blocmarks" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class='background-image'>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
@@ -17,4 +18,20 @@
        <%= yield %>
     </main>
   </body>
+  <script>
+    (function(w, d){
+      var id='embedly-platform', n = 'script';
+      if (!d.getElementById(id)){
+        w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+        var e = d.createElement(n); e.id = id; e.async=1;
+        e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+        var s = d.getElementsByTagName(n)[0];
+        s.parentNode.insertBefore(e, s);
+      }
+    })(window, document);
+    $(document).foundation();
+    setTimeout(function(){
+      $('.alert-box').fadeOut();
+    }, 3000);
+  </script>
 </html>
