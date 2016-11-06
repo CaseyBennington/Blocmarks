@@ -2,21 +2,30 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
-    <title><%= content_for?(:title) ? yield(:title) : "Blocmarks" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Blocmarks" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Shmarks" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Shmarks" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body class='background-image'>
+  <body class="background-image">
     <header>
-      <%= render 'layouts/navigation' %>
+      <nav role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1>
+              <%= link_to "Shmarks", root_path, id: "home_link" %>
+              <%= render 'layouts/navigation' %>
+            </h1>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+  <main role="main">
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+  </main>
   </body>
   <script>
     (function(w, d){
@@ -29,9 +38,5 @@
         s.parentNode.insertBefore(e, s);
       }
     })(window, document);
-    $(document).foundation();
-    setTimeout(function(){
-      $('.alert-box').fadeOut();
-    }, 3000);
   </script>
 </html>
