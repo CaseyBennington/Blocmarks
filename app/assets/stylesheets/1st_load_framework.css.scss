@@ -2,6 +2,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+html, body {
+  font-size: 100%;
+}
+header {
+  margin-bottom: 4%;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;

@@ -12,9 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
  */
-// @import 'foundation_and_overrides';
 
 // background image for site
 
@@ -24,7 +22,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: white;
-  // background-image: url('in_the_clouds2.jpg');
+  // background-image: url('');
 }
 
 // Centered content box
