@@ -8,6 +8,11 @@ class Bookmark < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  validates_presence_of :user
+  validates_presence_of :topic
+  validates_presence_of :url
+  validates :url, format: { with: /(http:\/\/)?(https:\/\/)?(www\.)?[a-zA-Z0-9\-\#\/\_]+[\.][a-zA-Z0-9\-\.\#\/\_]+/i }
+
   def embed_display(url)
     embedly_api = Embedly::API.new key: ENV['EMBEDLY_API_KEY']
     obj = embedly_api.oembed url: url

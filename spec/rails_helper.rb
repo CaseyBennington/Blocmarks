@@ -5,6 +5,14 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'factory_girl.rb'
+require 'factory_girl_rails'
+require 'devise'
+require 'shoulda/matchers'
+require 'capybara-screenshot/rspec'
+require 'database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -26,14 +34,89 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+Capybara::Webkit.configure do |config|
+  config.allow_url("gravatar.com")
+  config.allow_url("cdn.embedly.com")
+  config.allow_url("api.embed.ly")
+  config.allow_url("www.google-analytics.com")
+  config.allow_url("i-cdn.embed.ly")
+  config.allow_url("api-cdn.embed.ly")
+  config.allow_url("www.google.com")
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.include FactoryGirl::Syntax::Methods
+  config.include Warden::Test::Helpers
+  config.include Devise::TestHelpers, type: :controller
+
+  # Set test host for testing mailing
+  # Capybara.serve_port = 3000
+  # Capybara.app_host = 'http://localhost:3000'
+
+  # DatabaseCleaner.strategy = :truncation
+
+  config.before(:suite) do
+    begin
+      Warden.test_mode!
+      DatabaseCleaner.start
+      FactoryGirl.lint
+    ensure
+      DatabaseCleaner.clean
+    end
+  end
+
+  config.before(:each) do
+    begin
+      DatabaseCleaner.start
+    ensure
+      DatabaseCleaner.clean
+    end
+  end
+
+  # config.around(:each) do |example|
+  #   DatabaseCleaner.strategy = if example.metadata[:js] || example.metadata[:type] == 'feature'
+  #     :truncation
+  #   else
+  #     :transaction
+  #   end
+  #   DatabaseCleaner.start
+  #
+  #   example.run
+  #   # FactoryGirl.lint
+  #
+  #   Capybara.reset_sessions!
+  #   DatabaseCleaner.clean
+  # end
+
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

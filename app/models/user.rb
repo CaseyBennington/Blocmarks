@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   enum role: [:standard, :moderator, :admin]
 
+  validates_presence_of :email
+  validates_presence_of :password
+  validates_presence_of :password_confirmation
+
   def liked(bookmark)
     likes.where(bookmark_id: bookmark.id).first
   end

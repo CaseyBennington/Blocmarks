@@ -8,8 +8,8 @@
         <%= link_to "##{bookmark.topic.title}", bookmark.topic %>
         <%= link_to "#{bookmark.title}", "#{bookmark.url}", target: "_blank", class: 'embedly-card' %>
           <% if policy(bookmark).update? %>
-            <%= link_to "Edit", edit_bookmark_path(bookmark), class: 'edit-destroy-link' %>
-            <%= link_to "Remove", [bookmark], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'edit-destroy-link' %>
+            <%= link_to "Edit", edit_bookmark_path(bookmark), class: 'edit-destroy-link', id: 'edit_bookmark' %>
+            <%= link_to "Remove", [bookmark], method: :delete, id: 'delete_bookmark', data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'edit-destroy-link' %>
             <br />
           <% end %>
         <hr />

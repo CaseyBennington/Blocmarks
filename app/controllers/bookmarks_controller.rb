@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
     @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = @topic.bookmarks.build(bookmark_params)
     @bookmark.user = current_user
-    @bookmark.add_image
     authorize @bookmark
 
     if @bookmark.save
@@ -62,6 +61,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:url, :topic_id, :user_id, :title, :image)
+    params.require(:bookmark).permit(:url, :topic_id, :user_id, :title)
   end
 end

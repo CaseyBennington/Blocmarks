@@ -20,11 +20,17 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'launchy'
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
   gem 'capybara-email'
   gem 'email_spec'
   gem 'guard-rspec'
@@ -35,6 +41,7 @@ group :test do
   gem 'pundit-matchers'
 end
 
+gem 'rubocop', require: false
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'

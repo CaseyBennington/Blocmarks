@@ -1,8 +1,8 @@
-<h1><%= @topic.title %></h1>
+<h1>#<%= @topic.title %></h1>
 
 <% if policy(Topic.new).edit? %>
-  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
-  <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic? Deleting a topic will delete all associated bookmarks.' } %>
+  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success', id: 'edit_topic' %>
+  <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', id: 'delete_topic', data: { confirm: 'Are you sure you want to delete this topic? Deleting a topic will delete all associated bookmarks.' } %>
 <% end %>
 
 <div class = "row">
@@ -12,12 +12,13 @@
         <div class = "media">
           <div class = "media-body">
               <%= render partial: 'likes/like', locals: { bookmark: current_bookmark } %>
-              <%= link_to current_bookmark.url, "http://#{current_bookmark.url}", target: "_blank" %>
+              <%= link_to current_bookmark.url, "http://#{current_bookmark.url}", target: "_blank", class: 'embedly-card' %>
               <% if policy(current_bookmark).update? %>
-                <%= link_to "edit", edit_bookmark_path(current_bookmark) %>
-                <%= link_to "destroy", current_bookmark, method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
+                <%= link_to "edit", edit_bookmark_path(current_bookmark), id: 'edit_bookmark' %>
+                <%= link_to "destroy", current_bookmark, method: :delete, id: 'delete_bookmark', data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
               <% end %>
               <br />
+              <hr />
           </div>
         </div>
       <% end %>
@@ -27,7 +28,7 @@
   </div>
 
   <div class = "col-md-4">
-    <%= link_to "New Bookmark", new_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-success' %>
+    <%= link_to "Create Bookmark", new_topic_bookmark_path(@topic), name: 'create_bookmark', class: 'btn btn-success', id: 'create_bookmark' %>
     <%= link_to "Back", topics_path, class: 'btn btn-link' %>
   </div>
 </div>

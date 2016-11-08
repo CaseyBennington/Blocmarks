@@ -13,9 +13,9 @@
     <%= form_for @topic do |f| %>
       <div class = "form-group">
         <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control', placeholder: "Enter topic title" %>
+        <%= f.text_field :title, id: 'title', class: 'form-control', placeholder: "Enter topic title" %>
       </div>
-      <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= f.submit "Save", id: 'create_topic', class: 'btn btn-success' %>
       <%= link_to "Back", :back, class: 'btn btn-link' %>
     <% end %>
   </div>
