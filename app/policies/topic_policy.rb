@@ -1,13 +1,5 @@
 class TopicPolicy < ApplicationPolicy
-  def edit?
-    update?
-  end
-
-  def update?
-    user.present? && user.admin?
-  end
-
-  def destroy?
-    update?
+  def index?
+    true
   end
 end

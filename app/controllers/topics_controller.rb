@@ -35,8 +35,8 @@ class TopicsController < ApplicationController
   end
 
   def update
-    # @wiki.assign_attributes(wiki_params)
-    authorize @wiki
+    # @topic.assign_attributes(topic_params)
+    authorize @topic
 
     if @topic.update(topic_params)
       # @topic.slug = nil

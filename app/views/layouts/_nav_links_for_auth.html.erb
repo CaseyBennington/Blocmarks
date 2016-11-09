@@ -2,13 +2,11 @@
   <li><%= link_to 'Bookmarks', bookmarks_path %></li>
   <li><%= image_tag avatar_url(current_user), class: "gravatar" %></li>
   <% if current_user.email? %>
-    <li><%= link_to (current_user.email), user_path(current_user) %></li>
-  <% else %>
-    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-    <li><%= link_to 'Profile', user_path(current_user), class: 'navbar-brand' %></li>
+    <li><%= link_to 'Edit account', edit_user_registration_path, id: 'edit_user' %></li>
+    <li><%= link_to (current_user.email), user_path(current_user), class: 'navbar-brand', id: 'profile' %></li>
   <% end %>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', id: "sign_out" %></li>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <li><%= link_to 'Sign in', new_user_session_path, id: 'sign_in' %></li>
+  <li><%= link_to 'Sign up', new_user_registration_path, id: 'sign_up' %></li>
 <% end %>

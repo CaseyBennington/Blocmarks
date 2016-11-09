@@ -1,82 +1,79 @@
 <div class="row">
    <div class="col-md-8">
-     <div class="media">
-       <div class="media-body">
-         <h2 class="media-heading"><%= @user.email %></h2>
-         <small>
-           <%= pluralize(@user.bookmarks.count, 'bookmark') %>,
-           <%= pluralize(@user.likes.count, 'like') %>
-         </small>
-       </div>
-     </div>
+      <div class="media">
+         <div class="media-body">
+            <h2 class="media-heading"><%= @user.email %></h2>
+               <small>
+                  <%= pluralize(@user.bookmarks.count, 'bookmark') %>,
+                  <%= pluralize(@user.likes.count, 'like') %>,
+                  <%= pluralize(@user.topics.count, 'topic') %>
+               </small>
+         </div>
+      </div>
    </div>
- </div>
+</div>
 
- </br>
+</br>
 
 <div class="row">
    <div class="tabbable tabs-left">
-     <ul class="nav nav-tabs">
-       <li class="active"><a href="#bookmarks" data-toggle="tab">Bookmarks</a></li>
-       <li><a href="#likes" data-toggle="tab">Likes</a></li>
-     </ul>
-     <div class="">
-       <div class="tab-pane active">
-       </br>
-         <% @user_bookmarks.each do |bookmark| %>
-          <div class="">
-            <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-            <% if bookmark.title != nil %>
-              <%= "#{bookmark.title}" %>
-              </br>
-            <% else %>
-              <p>Bookmark title preview is not available</p>
-              </br>
+      <ul class="nav nav-pills">
+         <li class="active">
+            <a href="#bookmarks" id="bookmarks_link" data-toggle="tab">Bookmarks</a>
+         </li>
+         <li>
+            <a href="#likes" id="likes_link" data-toggle="tab">Likes</a>
+         </li>
+         <li>
+            <a href="#topics" id="topics_link" data-toggle="tab">Topics</a>
+         </li>
+      </ul>
+      <div class="tab-content clearfix">
+         <div class="tab-pane active" id="bookmarks"></br>
+            <% @user_bookmarks.each do |bookmark| %>
+               <div class="" id="<%= " #{bookmark.url}" %>">
+                  <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+                  <%= link_to "##{bookmark.topic.title}", bookmark.topic(:topic_id) %>
+                  <%= link_to "#{bookmark.url}", "#{bookmark.url}", target: "_blank", class: 'embedly-card' %>
+                  <% if policy(bookmark).update? %>
+                     <%= link_to "edit", edit_bookmark_path(bookmark), class: 'edit-destroy-link', id: 'edit_bookmark' %>
+                     <%= link_to "destroy", [bookmark], method: :delete, id: 'delete_bookmark', data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'btn btn-danger' %>
+                     </br>
+                  <% end %>
+                  <hr>
+               </div>
             <% end %>
-            <%= link_to "#{bookmark.title}", "#{bookmark.url}", target: "_blank", class: 'embedly-card' %>
-            <% if policy(bookmark).update? %>
-              <%= link_to "edit", edit_bookmark_path(bookmark), class: 'edit-destroy-link' %>
-              <%= link_to "destroy", [bookmark], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'btn btn-danger' %>
-           </br>
+         </div>
+         <div class="tab-pane" id="likes"></br>
+            <% @liked_bookmarks.each do |like| %>
+               <div class="" id="<%= " #{like.bookmark.url}" %>">
+                  <%= render partial: 'likes/like', locals: { bookmark: like.bookmark } %>
+                  <%= link_to "##{like.bookmark.topic.title}", like.bookmark.topic(:topic_id) %>
+                  <%= link_to "#{like.bookmark.url}", "#{like.bookmark.url}", target: "_blank", class: 'embedly-card' %>
+                  <% if policy(like).update? %>
+                     <%= link_to "edit", edit_bookmark_path(like.bookmark), class: 'btn btn-danger', id: 'edit_bookmark' %>
+                     <%= link_to "destroy", [like.bookmark], method: :delete, id: 'delete_bookmark', data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'btn btn-danger' %>
+                     </br>
+                  <% end %>
+                  <hr>
+               </div>
             <% end %>
-            <% if bookmark.image != nil %>
-              <%= image_tag(("#{bookmark.image}"), size: "200").html_safe %>
-            <% else %>
-              <%= image_tag("No_Image_Available.png", size: "200", :alt => "No Image Available") %>
+         </div>
+         <div class="tab-pane" id="topics"></br>
+            <% @user_topics.each do |topic| %>
+               <div class="" id="<%= " #{topic.title}" %>">
+                  <h4 class = "media-heading">
+                    <%= link_to "##{topic.title}", topic_path(topic.friendly_id) %>
+                  </h4>
+                  <% if policy(topic).edit? %>
+                    <%= link_to "edit", edit_topic_path(topic.friendly_id), id: 'edit_topic' %>
+                    <%= link_to "destroy", topic, method: :delete, id: 'delete_topic', data: { confirm: 'Are you sure you want to delete this topic? Deleting a topic will delete all associated bookmarks.' } %>
+                 </br>
+                  <% end %>
+                  <hr>
+               </div>
             <% end %>
-            <hr>
-            <%= link_to "##{bookmark.topic.title}", bookmark.topic(:topic_id) %>
-        </div>
-         <% end %>
-       </div>
-       <div class="tab-pane">
-          </br>
-         <% @liked_bookmarks.each do |like| %>
-          <div class="">
-            <%= render partial: 'likes/like', locals: { bookmark: like.bookmark } %>
-            <% if like.bookmark.title  != nil %>
-              <%= "#{like.bookmark.title}" %>
-              </br>
-            <% else %>
-              <p>Bookmark title preview is not available</p>
-              </br>
-            <% end %>
-            <%= link_to "#{like.bookmark.title}", "#{like.bookmark.url}", target: "_blank", class: 'embedly-card' %>
-            <% if policy(Topic).update? %>
-              <%= link_to "edit", edit_bookmark_path(like.bookmark), class: 'btn btn-danger' %>
-              <%= link_to "destroy", [like.bookmark], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' }, class: 'btn btn-danger' %>
-           </br>
-            <% end %>
-            <% if like.bookmark.image != nil %>
-              <%= image_tag(("#{like.bookmark.image}"), size: "200").html_safe %>
-            <% else %>
-              <%= image_tag("No_Image_Available.png", size: "200", :alt => "No Image Available") %>
-            <% end %>
-            <hr>
-            <%= link_to "##{like.bookmark.topic.title}", like.bookmark.topic(:topic_id) %>
-            </div>
-          <% end %>
-       </div>
-     </div>
+         </div>
+      </div>
    </div>
- </div>
+</div>
