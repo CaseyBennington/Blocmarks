@@ -60,38 +60,38 @@ RSpec.configure do |config|
 
   # DatabaseCleaner.strategy = :truncation
 
-  config.before(:suite) do
-    begin
-      Warden.test_mode!
-      DatabaseCleaner.start
-      FactoryGirl.lint
-    ensure
-      DatabaseCleaner.clean
-    end
-  end
-
-  config.before(:each) do
-    begin
-      DatabaseCleaner.start
-    ensure
-      DatabaseCleaner.clean
-    end
-  end
-
-  # config.around(:each) do |example|
-  #   DatabaseCleaner.strategy = if example.metadata[:js] || example.metadata[:type] == 'feature'
-  #     :truncation
-  #   else
-  #     :transaction
+  # config.before(:suite) do
+  #   begin
+  #     Warden.test_mode!
+  #     DatabaseCleaner.start
+  #     FactoryGirl.lint
+  #   ensure
+  #     DatabaseCleaner.clean
   #   end
-  #   DatabaseCleaner.start
-  #
-  #   example.run
-  #   # FactoryGirl.lint
-  #
-  #   Capybara.reset_sessions!
-  #   DatabaseCleaner.clean
   # end
+  #
+  # config.before(:each) do
+  #   begin
+  #     DatabaseCleaner.start
+  #   ensure
+  #     DatabaseCleaner.clean
+  #   end
+  # end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.strategy = if example.metadata[:js] || example.metadata[:type] == 'feature'
+      :truncation
+    else
+      :transaction
+    end
+    DatabaseCleaner.start
+
+    example.run
+    # FactoryGirl.lint
+
+    Capybara.reset_sessions!
+    DatabaseCleaner.clean
+  end
 
 
   config.before(:suite) do
